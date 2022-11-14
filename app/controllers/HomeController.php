@@ -4,18 +4,20 @@ class HomeController
 {
     function __construct()
     {
-        echo "<br>Constructor clase PRODUCTCONTROLLER";
+        //echo "<br>Constructor clase HOMECONTROLLER";
     }
 
     function index()
     {
-        echo "<br>Dentro index de PRODUCTCONTOLLER";
-        // metodo home de Controller mvc00
+        //echo "<br>Dentro index de HOMECONTOLLER";
+        $products = Product::all();
+        require "../views/home.php";
     }
 
-    function home()
+    function show()
     {
-        echo "<br>Dentro home de PRODUCTCONTOLLER";
-        // metodo show de Controller mvc00
+        //echo "<br>Dentro show de HOMECONTOLLER";
+
+        require "../views/show.php";
     }
 }

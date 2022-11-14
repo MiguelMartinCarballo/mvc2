@@ -4,18 +4,18 @@ class LoginController
 {
     function __construct()
     {
-        echo "<br>Constructor clase PRODUCTCONTROLLER";
+        echo "<br>Constructor clase LOGINCONTROLLER";
     }
 
     function index()
     {
-        echo "<br>Dentro index de PRODUCTCONTOLLER";
+        echo "<br>Dentro index de LOGINCONTOLLER";
         // metodo home de Controller mvc00
     }
 
-    function login()
+    function show()
     {
-        echo "<br>Dentro login de PRODUCTCONTOLLER";
+        echo "<br>Dentro login de LOGINCONTOLLER";
         // metodo show de Controller mvc00
     }
 }
