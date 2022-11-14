@@ -1,5 +1,7 @@
 <?php
 
+    require "../Product.php";
+
 class HomeController
 {
     function __construct()
