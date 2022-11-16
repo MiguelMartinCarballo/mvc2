@@ -1,6 +1,8 @@
 <?php
 
-    require "../Product.php";
+namespace App\Controllers;
+
+include "../Product.php"; 
 
 class HomeController
 {
@@ -12,7 +14,7 @@ class HomeController
     function index()
     {
         //echo "<br>Dentro index de HOMECONTOLLER";
-        $products = Product::all();
+        $products = \Product::all();
         require "../views/home.php";
     }
 
