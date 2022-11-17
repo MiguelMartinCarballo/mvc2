@@ -3,6 +3,21 @@
 
 class Product
 {
+
+    protected static function db()
+    {
+        $dsn = 'mysql:dbname=mvc;host=db';
+        $usuario = 'root';
+        $contraseña = 'password';
+        try {
+            $db = new PDO($dsn, $usuario, $contraseña);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Falló la conexión: ' . $e->getMessage();
+        }
+        return $db;
+    }
+    
     const PRODUCTS = [
         array(1, 'Cortacesped'),
         array(2, 'Pizarra'),
