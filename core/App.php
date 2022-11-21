@@ -37,7 +37,8 @@ class App
             die("No encontrado");
         }
 
-        // existe el metodo en el controlador ?
+        // existe el metodo en el controlador solicitado por url
+        $controllerName = "\\App\\Controllers\\$controllerName";
         $controllerObject = new $controllerName; // Objeto de la clase
         if(method_exists($controllerObject, $method)){
             $controllerObject->$method($arguments); // metodo ok -> lo invoco

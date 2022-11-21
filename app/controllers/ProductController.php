@@ -26,6 +26,6 @@ class ProductController
 
         $id = $_GET["id"];
         $product = \Product::find($id);
-        require "./app/views/show.php";
+        require "../app/views/show.php";
     }
 }

@@ -1,7 +1,15 @@
 <?php
 // Fichero que simula el modelo con datos
 
-class Product
+//namespace App\Models;
+
+use PDO;
+use Core\Model;
+use PDOException;
+
+require_once 'core/model.php';
+
+class Product extends Model
 {
 
     protected static function db()
