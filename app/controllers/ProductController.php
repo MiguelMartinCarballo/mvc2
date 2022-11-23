@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-    
+
 include "../Product.php"; 
 
 class ProductController
@@ -16,7 +16,7 @@ class ProductController
         // echo "<br>Dentro index de PRODUCTCONTOLLER";
         // metodo home de Controller mvc00
         $products = \Product::all();
-        require "../app/views/home.php";
+        require "../app/views/product.php";
     }
 
     function show()

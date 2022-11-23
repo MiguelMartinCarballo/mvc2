@@ -5,7 +5,8 @@
     // accion: metodos del controlador . controlador -> show(), find
     // parametros: find -> id de producto
 
-require_once "core/App.php";
+//autoload de composer
+require 'vendor/autoload.php';
 
 $app = new \Core\App();
 

@@ -3,9 +3,7 @@
 
 //namespace App\Models;
 
-use PDO;
 use Core\Model;
-use PDOException;
 
 require_once 'core/model.php';
 
