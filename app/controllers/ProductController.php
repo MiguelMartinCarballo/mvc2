@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-include "../Product.php"; 
+include "../models/Product.php"; 
 //include_once "./vendor/autoload.php";
 use Dompdf\Dompdf;
+use App\Models\Product;
 
 class ProductController
 {
@@ -17,7 +18,7 @@ class ProductController
     {
         // echo "<br>Dentro index de PRODUCTCONTOLLER";
         // metodo home de Controller mvc00
-        $products = \Product::all();
+        $products = Product::all();
         require "../app/views/product.php";
     }
 
@@ -27,7 +28,7 @@ class ProductController
         // metodo show de Controller mvc00
 
         $id = $_GET["id"];
-        $product = \Product::find($id);
+        $product = Product::find($id);
         require "../app/views/show.php";
     }
 
