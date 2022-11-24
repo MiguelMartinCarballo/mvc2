@@ -8,7 +8,7 @@ require_once '../core/Model.php';
 /**
 *
 */
-class User extends Model
+class Product extends Model
 {
     public static function all(){ }
     public static function find($id){ }
