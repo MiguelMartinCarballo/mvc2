@@ -22,15 +22,16 @@
 
         <?php foreach ($products as $key => $product) { ?>
             <tr>
+            <td><?php echo $product->id ?></td>
             <td><?php echo $product->name ?></td>
-            <td><?php echo $product->surname ?></td>
-            <td><?php echo $product->email ?></td>
-            <td><?php echo $product->birthdate ?></td>
+            <td><?php echo $product->type_id ?></td>
+            <td><?php echo $product->price ?></td>
+            <td><?php echo $product->fecha_compra ?></td>
             <td>
             <a href="/product/show/<?php echo $product->id ?>" class="btn btn-primary">Ver </a>
             </td>
             </tr>
-    <?php } ?>
+        <?php } ?>
     </table>
 </body>
 

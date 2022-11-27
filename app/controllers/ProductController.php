@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-include "../models/Product.php"; 
+include "../app/models/Product.php"; 
+
 //include_once "./vendor/autoload.php";
 use Dompdf\Dompdf;
 use App\Models\Product;
@@ -22,14 +23,13 @@ class ProductController
         require "../app/views/product.php";
     }
 
-    function show()
+    public function show($args)
     {
-        // echo "<br>Dentro show de PRODUCTCONTOLLER";
-        // metodo show de Controller mvc00
-
-        $id = $_GET["id"];
+        //args es un array, tomamos el id con uno de estos métodos
+        // $id = (int) $args[0];
+        list($id) = $args;
         $product = Product::find($id);
-        require "../app/views/show.php";
+        require('../app/views/show.php');        
     }
 
     function pdf(){
