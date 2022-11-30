@@ -1,15 +1,12 @@
 {
-    "name": "alumno/mvc",
+    "name": "alumno/ex",
     "authors": [
         {
-            "name": "Miguel Martín",
-            "email": "miguelmc.es@gmail.com"
+            "name": "sh",
+            "email": "sh@gmail.com"
         }
     ],
-    "require": {
-        "dompdf/dompdf": "^2.0"
-    },
-
+    "require": {},
     "autoload": {
         "psr-4": {
             "Core\\": "core/",

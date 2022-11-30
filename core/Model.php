@@ -9,12 +9,17 @@ use const Config\PASSWORD;
 //necesario para referirnos a ella
 use PDO;
 use PDOException;
-
 /**
 *
 */
 class Model
 {
+
+    function __construct()
+    {
+        # code...
+    }
+
     protected static function db()
     {
         try {
