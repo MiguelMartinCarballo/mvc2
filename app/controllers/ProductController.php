@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
-include "../Product.php"; 
+include "../app/models/Product.php"; 
+
 //include_once "./vendor/autoload.php";
 use Dompdf\Dompdf;
+use App\Models\Product;
 
 class ProductController
 {
@@ -17,18 +19,60 @@ class ProductController
     {
         // echo "<br>Dentro index de PRODUCTCONTOLLER";
         // metodo home de Controller mvc00
-        $products = \Product::all();
+        $products = Product::all();
         require "../app/views/product.php";
     }
 
-    function show()
+    public function show($args)
     {
-        // echo "<br>Dentro show de PRODUCTCONTOLLER";
-        // metodo show de Controller mvc00
+        //args es un array, tomamos el id con uno de estos métodos
+        // $id = (int) $args[0];
+        list($id) = $args;
+        $product = Product::find($id);
+        require('../app/views/show.php');        
+    }
 
-        $id = $_GET["id"];
-        $product = \Product::find($id);
-        require "../app/views/show.php";
+    public function create()
+    {
+        require '../app/views/create.php';
+    }
+
+    public function store()
+    {
+        $product = new Product();
+        $product->name = $_REQUEST['name'];
+        $product->type_id = $_REQUEST['type_id'];
+        $product->price = $_REQUEST['price'];
+        $product->fecha_compra = $_REQUEST['fecha_compra'];
+        $product->insert();
+        header('Location:/product');
+    }
+
+    public function edit($arguments)
+    {
+        $id = (int) $arguments[0];
+        $product = Product::find($id);
+        require '../app/views/edit.php';
+    }
+
+    public function update()
+    {
+        $id = $_REQUEST['id'];
+        $product = Product::find($id);
+        $product->name = $_REQUEST['name'];
+        $product->type_id = $_REQUEST['type_id'];
+        $product->price = $_REQUEST['price'];
+        $product->fecha_compra = $_REQUEST['fecha_compra'];
+        $product->save();
+        header('Location:/product');
+    }
+
+    public function delete($arguments)
+    {
+    $id = (int) $arguments[0];
+    $product = Product::find($id);
+    $product->delete();
+    header('Location:/product');
     }
 
     function pdf(){

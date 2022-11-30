@@ -8,17 +8,30 @@
 </head>
 
 <body>
-    <h1>Inventario de productos</h1>
-    <table>
-        <?php
-        foreach ($products as $item):
-        ?>
+    <h1>Lista de productos</h1>
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Fecha compra</th>
+            <th></th>
+        </tr>
+
+        <?php foreach ($products as $key => $product) { ?>
             <tr>
-                <td>Identificador:  <?= $item[0] ?></td>
-                <td>Descripción:    <?= $item[1] ?></a></td>
-                <td><a href="?method=show&id=<?= $item[0] ?>">Ver detalles</a></td>
+            <td><?php echo $product->id ?></td>
+            <td><?php echo $product->name ?></td>
+            <td><?php echo $product->type_id ?></td>
+            <td><?php echo $product->price ?></td>
+            <td><?php echo $product->fecha_compra ?></td>
+            <td>
+            <a href="/product/show/<?php echo $product->id ?>" class="btn btn-primary">Ver </a>
+            </td>
             </tr>
-        <?php endforeach; ?>
+        <?php } ?>
     </table>
 </body>
 
