@@ -16,10 +16,12 @@ class LoginController
 
     function verify()
     {
+        /*
         if(isset($_POST['login'])){
             $usuario = $_POST['usuairo'];
             $pw = $_POST['password'];
-            if()
+            if($usuario = )
         }
+        */
     }
 }

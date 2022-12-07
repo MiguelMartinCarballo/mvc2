@@ -17,7 +17,7 @@
             <th>Tipo</th>
             <th>Precio</th>
             <th>Fecha compra</th>
-            <th></th>
+            <th>Tipo producto</th>
         </tr>
 
         <?php foreach ($products as $key => $product) { ?>
@@ -27,7 +27,10 @@
             <td><?php echo $product->type_id ?></td>
             <td><?php echo $product->price ?></td>
             <td><?php echo $product->fecha_compra ?></td>
+            <td><?php echo $product->type()->name ?></td>
             <td>
+            <a href="/product/show/<?php echo $product->id ?>" class="btn btn-primary">Ver </a>
+            <a href="/product/show/<?php echo $product->id ?>" class="btn btn-primary">Ver </a>
             <a href="/product/show/<?php echo $product->id ?>" class="btn btn-primary">Ver </a>
             </td>
             </tr>

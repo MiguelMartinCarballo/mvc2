@@ -17,6 +17,15 @@
             <input type="text" name="name" class="form-control">
         </div>
         <div class="form-group">
+        <select>
+        <?php
+            foreach($types as $type) {
+                echo "<option value=\" $type->id \">$type->name</option>";
+            }
+        ?>
+        </select>
+        </div>
+        <div class="form-group">
             <label>Tipo id</label>
             <input type="text" name="type_id" class="form-control">
         </div>

@@ -8,7 +8,7 @@ require_once '../core/Model.php';
 /**
 *
 */
-class Product extends Model
+class ProductType extends Model
 {
     public function __construct()
     {
@@ -16,27 +16,27 @@ class Product extends Model
     }
 
     public static function all(){
-        $db = Product::db();
-        $statement = $db->query('SELECT * FROM products');
-        $products = $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
+        $db = ProductType::db();
+        $statement = $db->query('SELECT * FROM product_types');
+        $products = $statement->fetchAll(PDO::FETCH_CLASS, ProductType::class);
 
         return $products;
     }
 
     public static function find($id)
     {
-        $db = Product::db();
-        $stmt = $db->prepare('SELECT * FROM products WHERE id=:id');
+        $db = ProductType::db();
+        $stmt = $db->prepare('SELECT * FROM product_types WHERE id=:id');
         $stmt->execute(array(':id' => $id));
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, ProductType::class);
         $product = $stmt->fetch(PDO::FETCH_CLASS);
         return $product;
     }
 
     public function insert()
     {
-        $db = Product::db();
-        $stmt = $db->prepare('INSERT INTO products(name, type_id, price, fecha_compra) VALUES(:name, :type_id, :price, :fecha_compra)');
+        $db = ProductType::db();
+        $stmt = $db->prepare('INSERT INTO product_types(name, type_id, price, fecha_compra) VALUES(:name, :type_id, :price, :fecha_compra)');
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':type_id', $this->type_id);
         $stmt->bindValue(':price', $this->price);
@@ -46,8 +46,8 @@ class Product extends Model
 
     public function save()
     {
-        $db = Product::db();
-        $stmt = $db->prepare('UPDATE products SET name = :name, type_id = :type_id, price = :price, fecha_compra = :fecha_compra WHERE id = :id');
+        $db = ProductType::db();
+        $stmt = $db->prepare('UPDATE product_types SET name = :name, type_id = :type_id, price = :price, fecha_compra = :fecha_compra WHERE id = :id');
         $stmt->bindValue(':id', $this->id);
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':type_id', $this->type_id);
@@ -58,24 +58,22 @@ class Product extends Model
 
     public function delete()
     {
-        $db = Product::db();
-        $stmt = $db->prepare('DELETE FROM products WHERE id = :id');
+        $db = ProductType::db();
+        $stmt = $db->prepare('DELETE FROM product_types WHERE id = :id');
         $stmt->bindValue(':id', $this->id);
         return $stmt->execute();
     }
 
-    public function type()
+    public function products()
     {
         //un producto pertenece a un tipo:
-        $db = Product::db();
-        $statement = $db->prepare('SELECT * FROM product_types WHERE id = :id');
-        $statement->bindValue(':id', $this->type_id);
+        $db = ProductType::db();
+        $statement = $db->prepare('SELECT * FROM product WHERE type_id = :type_id');
+        $statement->bindValue(':type_id', $this->id);
         $statement->execute();
+        $products = $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
 
-        $statement->setFetchMode(PDO::FETCH_CLASS, ProductType::class);
-        $product_type = $statement->fetch(PDO::FETCH_CLASS);
-
-        return $product_type;
+        return $products;
     }
 
     public function __get($atributoDesconocido)

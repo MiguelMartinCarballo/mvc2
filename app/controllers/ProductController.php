@@ -7,6 +7,7 @@ include "../app/models/Product.php";
 //include_once "./vendor/autoload.php";
 use Dompdf\Dompdf;
 use App\Models\Product;
+use App\Models\ProductType;
 
 class ProductController
 {
@@ -34,6 +35,7 @@ class ProductController
 
     public function create()
     {
+        $types = ProductType::all();
         require '../app/views/create.php';
     }
 
