@@ -11,13 +11,15 @@ class LoginController
 
     function index()
     {
-        echo "<br>Dentro index de LOGINCONTOLLER";
-        // metodo home de Controller mvc00
+        require "../app/views/login.php";
     }
 
-    function show()
+    function verify()
     {
-        echo "<br>Dentro login de LOGINCONTOLLER";
-        // metodo show de Controller mvc00
+        if(isset($_POST['login'])){
+            $usuario = $_POST['usuairo'];
+            $pw = $_POST['password'];
+            if()
+        }
     }
 }

@@ -63,20 +63,4 @@ class Product extends Model
         $stmt->bindValue(':id', $this->id);
         return $stmt->execute();
     }
-
-    public function setPassword($password)
-    {
-        $password = password_hash($password, PASSWORD_BCRYPT);
-        $db = Product::db();
-        $stmt = $db->prepare('UPDATE products SET password = :password WHERE id = :id');
-        $stmt->bindValue(':id', $this->id);
-        $stmt->bindValue(':password', $password);
-        $stmt->execute();
-        return $password;
-    }
-
-    public function passwordVerify($password)
-    {
-        return password_verify($password, $this->password);
-    }
 }
